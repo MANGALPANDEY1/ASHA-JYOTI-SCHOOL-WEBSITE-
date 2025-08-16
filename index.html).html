@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Asha Jyoti School — Official Website</title>
+  <meta name="description" content="Asha Jyoti School — Bansagar • Budwa • Bholehra. Admissions open. Teacher & Management login. Quality education since 1996."/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+  <style>
+    :root{
+      --navy:#0b315e;--navy2:#0f467d;--gold:#b48a2c;--paper:#ffffff;--ink:#0b1220;--muted:#607089;--soft:#f3f6fb;--ring:rgba(180,138,44,.35);--radius:20px;--shadow:0 14px 40px rgba(11,49,94,.12)
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(180deg,#fafcff, #eef3f9);color:var(--ink);line-height:1.6}
+    a{text-decoration:none;color:var(--navy2)}
+
+    /* Topbar */
+    .topbar{background:linear-gradient(90deg,var(--navy),#123d70,var(--navy2));color:#fff;font-size:.92rem;padding:8px 20px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #e6edf5;backdrop-filter:saturate(1.1) blur(6px)}
+    .nav{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{width:56px;height:56px;object-fit:contain}
+    .brand h1{font-family:"Playfair Display",serif;font-weight:700;font-size:1.35rem;margin:0;color:var(--navy)}
+    .brand small{display:block;color:var(--muted);font-weight:500;letter-spacing:.12em}
+    .links{display:flex;gap:22px;align-items:center}
+    .links a{font-weight:500;color:#0b1220}
+    .links a:hover{color:var(--navy2)}
+    .button{border:none;border-radius:999px;padding:10px 16px;font-weight:600;cursor:pointer}
+    .button.primary{background:var(--navy);color:#fff}
+    .button.primary:hover{background:#092a4f}
+    .button.ghost{background:transparent;border:1.5px solid #dbe2ea;color:#0b1220}
+    .button.ghost:hover{border-color:var(--navy2);color:var(--navy2)}
+    .lang{background:#fff;border:1.5px solid #e6eaf0;border-radius:999px;padding:8px 12px;cursor:pointer}
+    .hamburger{display:none;font-size:1.6rem;background:transparent;border:none}
+
+    .container{max-width:1200px;margin:0 auto;padding:40px 20px}
+
+    /* Hero */
+    .hero{position:relative;overflow:hidden;isolation:isolate;background: radial-gradient(1200px 500px at 80% -80%, rgba(11,49,94,.15), transparent), radial-gradient(900px 500px at -10% -60%, rgba(180,138,44,.18), transparent), linear-gradient(180deg,#ffffff 0%, #f4f7fb 100%)}
+    .hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:32px;align-items:center}
+    .badge{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:#fff;border:1px solid #e6eaf0;box-shadow:var(--shadow)}
+    .badge i{color:var(--gold)}
+    .hero h2{font-family:"Playfair Display",serif;font-size:2.6rem;line-height:1.15;margin:14px 0;color:#0b1220}
+    .hero p{color:#374151;margin:10px 0 20px}
+    .stats{display:flex;gap:18px;flex-wrap:wrap;margin-top:16px}
+    .stat{background:#fff;border:1px solid #e7ebf2;border-radius:16px;padding:14px 16px;min-width:150px;box-shadow:var(--shadow)}
+    .stat b{display:block;font-size:1.3rem;color:var(--navy)}
+
+    .card{background:#fff;border:1px solid #e7ebf2;border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+
+    .section-title{font-family:"Playfair Display",serif;font-size:1.9rem;color:#0b1220;margin:0 0 10px}
+    .muted{color:var(--muted)}
+
+    .branches .campus{display:flex;gap:14px;align-items:flex-start}
+    .chip{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #e7ebf2;border-radius:999px;padding:8px 12px}
+
+    .cta-band{background:linear-gradient(90deg,var(--navy) 0%, #123d70 50%, var(--navy2) 100%);color:#fff}
+    .cta-band .band{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+
+    .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    .gallery figure{aspect-ratio:4/3;border-radius:16px;background:linear-gradient(135deg,#dfe7f3,#f6f7fb);border:1px dashed #cdd6e3;display:grid;place-items:center;color:#64748b;margin:0;position:relative;overflow:hidden}
+    .gallery img{width:100%;height:100%;object-fit:cover}
+    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.75);display:none;align-items:center;justify-content:center;padding:20px;z-index:100}
+    .lightbox img{max-width:92vw;max-height:88vh;border-radius:16px;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+
+    footer{background:#0a2746;color:#dbe7f6}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:22px}
+    .footer-grid a{color:#dbe7f6;opacity:.9}
+    .footer-grid a:hover{opacity:1}
+    .copyright{border-top:1px solid rgba(255,255,255,.12);margin-top:18px;padding-top:12px;color:#a8c3df}
+
+    /* Modal */
+    .overlay{position:fixed;inset:0;background:rgba(2,6,23,.5);display:none;align-items:center;justify-content:center;padding:20px;z-index:100}
+    .modal{width:min(720px,96vw);background:#fff;border-radius:22px;box-shadow:0 40px 80px rgba(2,6,23,.35);overflow:hidden;border:1px solid #e7ebf2}
+    .modal-header{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:1px solid #eef2f7}
+    .tabs{display:flex;gap:8px;padding:10px 14px}
+    .tab{flex:1;display:flex;gap:8px;align-items:center;justify-content:center;padding:10px;border-radius:12px;border:1px solid #e7ebf2;background:#fafcff;cursor:pointer;font-weight:600}
+    .tab.active{border-color:var(--ring);box-shadow:0 0 0 3px var(--ring)}
+    .modal-body{padding:18px}
+    label{display:block;font-size:.92rem;color:#0b1220;margin:10px 0 6px}
+    input,select,textarea{width:100%;padding:12px;border-radius:12px;border:1px solid #dbe2ea;background:#fff}
+    input:focus,select:focus,textarea:focus{outline:none;box-shadow:0 0 0 3px var(--ring);border-color:var(--gold)}
+    .actions{display:flex;gap:10px;justify-content:flex-end;margin-top:14px}
+
+    /* Dashboards */
+    .dashboard{display:none}
+    .dash-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:18px}
+    .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:14px}
+    .kpi{border-left:6px solid var(--gold)}
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:10px 12px;border-bottom:1px solid #eef2f7;text-align:left}
+    th{background:#f7fafc;color:#0b1220}
+    tr:hover{background:#fafcff}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero-grid{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr 1fr}
+      .gallery{grid-template-columns:repeat(3,1fr)}
+      .links{display:none}
+      .hamburger{display:block}
+      .kpis{grid-template-columns:1fr 1fr}
+      .dash-grid{grid-template-columns:1fr}
+    }
+    @media (max-width:640px){
+      .grid-3{grid-template-columns:1fr}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+      .brand h1{font-size:1.1rem}
+      .hero h2{font-size:2.05rem}
+    }
+  </style>
+</head>
+<body>
+  <!-- Topbar -->
+  <div class="topbar">
+    <span><i class="ri-phone-line"></i> 9424776151</span>
+    <span><i class="ri-mail-line"></i> ashajyoti96bansagar1@gmail.com</span>
+    <span><i class="ri-mail-line"></i> ashajyoti96budwa2@gmail.com</span>
+    <span><i class="ri-map-pin-2-line"></i> Bansagar • Budwa • Bholehra</span>
+    <a href="https://www.instagram.com/ashajyotischools" target="_blank" rel="noopener"><i class="ri-instagram-line"></i> Instagram</a>
+  </div>
+
+  <!-- Header / Nav -->
+  <header>
+    <nav class="nav">
+      <div class="brand">
+        <img src="logo.png" alt="Asha Jyoti School Logo" />
+        <div>
+          <h1>ASHA JYOTI <span style="color:var(--gold)">SCHOOL</span></h1>
+          <small>ESTD. 1996 • Central India</small>
+        </div>
+      </div>
+      <div class="links" id="navLinks">
+        <a href="#home" data-key="navHome">Home</a>
+        <a href="#about" data-key="navAbout">About</a>
+        <a href="#academics" data-key="navAcademics">Academics</a>
+        <a href="#admission" data-key="navAdmission">Admission</a>
+        <a href="#gallery" data-key="navGallery">Gallery</a>
+        <a href="#contact" data-key="navContact">Contact</a>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center">
+        <button class="lang" id="langBtn">हिंदी</button>
+        <button class="button ghost" onclick="scrollToId('admission')"><i class="ri-pen-nib-line"></i> <span data-key="apply">Apply</span></button>
+        <button class="button primary" id="loginBtn"><i class="ri-login-circle-line"></i> <span data-key="login">Login</span></button>
+        <button class="hamburger" id="hamburger"><i class="ri-menu-line"></i></button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main (Public Site) -->
+  <main id="publicSite">
+    <!-- Hero -->
+    <section id="home" class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="badge"><i class="ri-star-smile-line"></i> <span data-key="tagline">Nurturing minds since 1996</span></span>
+          <h2><span data-key="hero1">Where Discipline meets</span> <span style="color:var(--gold)" data-key="hero2">Discovery</span> <span data-key="hero3">& Dreams.</span></h2>
+          <p data-key="heroP">Asha Jyoti School is a community of learners committed to excellence in academics, character and creativity. With campuses in <b>Bansagar, Budwa and Bholehra</b>, we deliver quality education with a caring heart.</p>
+          <div class="stats">
+            <div class="stat"><b>3</b><span data-key="stat1">Campuses</span></div>
+            <div class="stat"><b>1996</b><span data-key="stat2">Founded</span></div>
+            <div class="stat"><b>Nur–X</b><span data-key="stat3">Classes</span></div>
+          </div>
+          <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
+            <button class="button primary" onclick="scrollToId('admission')"><i class="ri-rocket-line"></i> <span data-key="startAdmission">Start Admission</span></button>
+            <a class="button ghost" href="#about"><i class="ri-information-line"></i> <span data-key="knowMore">Know More</span></a>
+          </div>
+        </div>
+        <div class="card">
+          <span class="badge"><i class="ri-shield-star-line"></i> <span data-key="safeCampus">Safe & Caring Campus</span></span>
+          <div style="margin-top:14px" class="grid-3">
+            <div class="card"><i class="ri-book-2-line"></i><h3 data-key="feat1">Strong Academics</h3><p class="muted" data-key="feat1p">Concept‑based learning, structured practice & regular assessments.</p></div>
+            <div class="card"><i class="ri-flask-line"></i><h3 data-key="feat2">Labs & Library</h3><p class="muted" data-key="feat2p">Well‑equipped Science, Computer labs and a rich reading culture.</p></div>
+            <div class="card"><i class="ri-football-line"></i><h3 data-key="feat3">Sports & Arts</h3><p class="muted" data-key="feat3p">Daily sports, cultural events and clubs to build confidence.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="container">
+      <h2 class="section-title" data-key="aboutTitle">About the School</h2>
+      <p class="muted" data-key="aboutText">Our mission is to build responsible, compassionate and future‑ready citizens. We focus on fundamentals, language fluency, mathematics and scientific temper while nurturing values and discipline.</p>
+      <div class="grid-3" style="margin-top:14px">
+        <div class="card"><i class="ri-compass-3-line"></i><h3 data-key="vision">Vision</h3><p class="muted" data-key="visionText">Ignite curiosity and character so every child becomes a lifelong learner.</p></div>
+        <div class="card"><i class="ri-heart-2-line"></i><h3 data-key="values">Values</h3><p class="muted" data-key="valuesText">Respect • Integrity • Discipline • Service.</p></div>
+        <div class="card"><i class="ri-group-line"></i><h3 data-key="faculty">Faculty</h3><p class="muted" data-key="facultyText">Dedicated and trained teachers with continuous mentoring and support.</p></div>
+      </div>
+    </section>
+
+    <!-- Academics / Branches -->
+    <section id="academics" class="container branches">
+      <h2 class="section-title" data-key="acadTitle">Academics & Campuses</h2>
+      <div class="grid-3">
+        <div class="card campus">
+          <i class="ri-map-pin-2-line"></i>
+          <div>
+            <h3>Bansagar</h3>
+            <p class="muted" data-key="bansagar">Pre‑Primary to Class X • Spacious playground • Smart classrooms</p>
+          </div>
+        </div>
+        <div class="card campus">
+          <i class="ri-map-pin-2-line"></i>
+          <div>
+            <h3>Budwa</h3>
+            <p class="muted" data-key="budwa">Primary & Middle School • Computer Lab • Activity rooms</p>
+          </div>
+        </div>
+        <div class="card campus">
+          <i class="ri-map-pin-2-line"></i>
+          <div>
+            <h3>Bholehra</h3>
+            <p class="muted" data-key="bholehra">Foundational learning • Safe and caring environment</p>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+        <span class="chip"><i class="ri-check-line"></i> <span data-key="chip1">English & Hindi Medium</span></span>
+        <span class="chip"><i class="ri-check-line"></i> <span data-key="chip2">Regular PTMs</span></span>
+        <span class="chip"><i class="ri-check-line"></i> <span data-key="chip3">Scholarships (as per policy)</span></span>
+      </div>
+    </section>
+
+    <!-- Admission CTA band -->
+    <section class="cta-band" id="admission">
+      <div class="container band">
+        <div>
+          <h3 style="margin:0;font-family:'Playfair Display',serif;font-size:1.6rem" data-key="admOpen">Admissions Open</h3>
+          <p style="margin:6px 0 0;opacity:.9" data-key="admSub">Session 2025–26 • Nursery to Class X • Limited seats</p>
+        </div>
+        <div style="display:flex;gap:10px;align-items:center">
+          <button class="button ghost" onclick="openModal()"><i class="ri-login-circle-line"></i> <span data-key="login">Login</span></button>
+          <a class="button primary" href="#apply-form"><i class="ri-ink-bottle-line"></i> <span data-key="applyNow">Apply Now</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Enquiry / Admission Form -->
+    <section class="container" id="apply-form">
+      <h2 class="section-title" data-key="enquiry">Quick Enquiry</h2>
+      <p class="muted" data-key="enquiryText">Fill this short form and our team will contact you.</p>
+      <form id="enquiryForm" class="card">
+        <div class="grid-3" style="grid-template-columns:1fr 1fr 1fr">
+          <div>
+            <label data-key="studentName">Student Name</label>
+            <input required placeholder="Enter full name" name="student" />
+          </div>
+          <div>
+            <label data-key="classFor">Class Applying For</label>
+            <select required name="class">
+              <option value="">Select</option>
+              <option>Nursery</option><option>LKG</option><option>UKG</option>
+              <option>Class 1</option><option>Class 2</option><option>Class 3</option>
+              <option>Class 4</option><option>Class 5</option><option>Class 6</option>
+              <option>Class 7</option><option>Class 8</option><option>Class 9</option><option>Class 10</option>
+            </select>
+          </div>
+          <div>
+            <label data-key="parent">Parent/Guardian</label>
+            <input required placeholder="Parent name" name="parent" />
+          </div>
+          <div>
+            <label data-key="phone">Phone</label>
+            <input required type="tel" placeholder="10‑digit number" name="phone" />
+          </div>
+          <div>
+            <label>Branch</label>
+            <select name="branch" required>
+              <option value="Bansagar">Bansagar</option>
+              <option value="Budwa">Budwa</option>
+              <option value="Bholehra">Bholehra</option>
+            </select>
+          </div>
+        </div>
+        <label data-key="message">Message</label>
+        <textarea rows="4" placeholder="Tell us about the student (optional)" name="message"></textarea>
+        <div class="actions">
+          <button class="button ghost" type="reset" data-key="reset">Reset</button>
+          <button class="button primary" type="submit" data-key="submit">Submit</button>
+        </div>
+      </form>
+      <p id="enquiryThanks" class="muted" style="display:none;margin-top:10px">Thank you! We will get back to you shortly.</p>
+    </section>
+
+    <!-- Gallery -->
+    <section class="container" id="gallery">
+      <h2 class="section-title" data-key="galleryTitle">Gallery</h2>
+      <p class="muted" data-key="galleryText">Add your school photos here. Click a photo to view large.</p>
+      <div class="gallery" id="galleryGrid"></div>
+    </section>
+
+    <!-- Contact -->
+    <section class="container" id="contact">
+      <h2 class="section-title" data-key="contactTitle">Contact</h2>
+      <div class="grid-3">
+        <div class="card">
+          <h3><i class="ri-phone-line"></i> <span data-key="phone2">Phone</span></h3>
+          <p>9424776151</p>
+        </div>
+        <div class="card">
+          <h3><i class="ri-mail-line"></i> <span data-key="email">Email</span></h3>
+          <p><a href="mailto:ashajyoti96bansagar1@gmail.com">ashajyoti96bansagar1@gmail.com</a><br><a href="mailto:ashajyoti96budwa2@gmail.com">ashajyoti96budwa2@gmail.com</a></p>
+        </div>
+        <div class="card">
+          <h3><i class="ri-map-pin-line"></i> <span data-key="campuses">Campuses</span></h3>
+          <p>Bansagar • Budwa • Bholehra</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container footer-grid">
+        <div>
+          <h3 style="margin:0 0 8px">Asha Jyoti School</h3>
+          <p style="margin:0 0 8px;opacity:.9">Bansagar • Budwa • Bholehra</p>
+          <p style="margin:0;opacity:.8">© 1996–2025 Asha Jyoti School. All rights reserved.</p>
+        </div>
+        <div>
+          <h4 data-key="quickLinks">Quick Links</h4>
+          <p><a href="#admission" data-key="navAdmission">Admission</a></p>
+          <p><a href="#gallery" data-key="navGallery">Gallery</a></p>
+          <p><a href="#contact" data-key="navContact">Contact</a></p>
+        </div>
+        <div>
+          <h4 data-key="social">Social</h4>
+          <p><a href="https://www.instagram.com/ashajyotischools" target="_blank" rel="noopener">Instagram</a></p>
+        </div>
+      </div>
+      <div class="container copyright">Made with ♥ for our students and community.</div>
+    </footer>
+  </main>
+
+  <!-- ===== Teacher Dashboard ===== -->
+  <section id="teacherDash" class="container dashboard">
+    <h2 class="section-title"><i class="ri-user-voice-line"></i> <span data-key="tDash">Teacher Dashboard</span></h2>
+    <div class="kpis">
+      <div class="card kpi"><h3 data-key="students">Students</h3><p id="kpiStudents">0</p></div>
+      <div class="card kpi"><h3 data-key="classes">Classes</h3><p id="kpiClasses">0</p></div>
+      <div class="card kpi"><h3 data-key="attendance">Attendance Today</h3><p id="kpiAttendance">0%</p></div>
+      <div class="card kpi"><h3 data-key="avgMarks">Avg. Marks</h3><p id="kpiAvg">—</p></div>
+    </div>
+    <div class="dash-grid">
+      <div class="card">
+        <div style="display:flex;gap:10px;align-items:center;justify-content:space-between;margin-bottom:10px">
+          <strong data-key="stuList">Student List</strong>
+          <div style="display:flex;gap:8px">
+            <select id="filterClass">
+              <option value="">All Classes</option>
+              <option>Class 5</option><option>Class 6</option><option>Class 7</option><option>Class 8</option><option>Class 9</option><option>Class 10</option>
+            </select>
+            <input id="searchBox" placeholder="Search by name"/>
+          </div>
+        </div>
+        <table id="studentTable">
+          <thead>
+            <tr>
+              <th>Name</th><th>Class</th><th>Roll</th><th>Branch</th><th>Attendance</th><th>Avg Marks</th><th>Action</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="card">
+        <strong data-key="quickActions">Quick Actions</strong>
+        <label style="margin-top:8px">Mark Attendance (Today)</label>
+        <div id="attnBox" class="muted" style="margin:6px 0 10px">Select a student from the list.</div>
+        <div style="display:flex;gap:8px">
+          <button class="button primary" id="markPresent"><i class="ri-check-line"></i> Present</button>
+          <button class="button ghost" id="markAbsent"><i class="ri-close-line"></i> Absent</button>
+        </div>
+        <hr style="margin:16px 0;border:none;border-top:1px solid #eef2f7"/>
+        <strong>Notes</strong>
+        <textarea id="teacherNotes" rows="6" placeholder="Write notes for your class…"></textarea>
+        <div class="actions"><button class="button primary" id="saveNotes">Save</button></div>
+      </div>
+    </div>
+    <div class="actions" style="justify-content:flex-start"><button class="button ghost" onclick="logout()"><i class="ri-logout-box-r-line"></i> <span data-key="logout">Logout</span></button></div>
+  </section>
+
+  <!-- ===== Management Dashboard ===== -->
+  <section id="mgmtDash" class="container dashboard">
+    <h2 class="section-title"><i class="ri-shield-user-line"></i> <span data-key="mDash">Management Dashboard</span></h2>
+    <div class="kpis">
+      <div class="card kpi"><h3>Total Students</h3><p id="mStudents">—</p></div>
+      <div class="card kpi"><h3>Total Teachers</h3><p id="mTeachers">—</p></div>
+      <div class="card kpi"><h3>Branches</h3><p id="mBranches">3</p></div>
+      <div class="card kpi"><h3>Active Notices</h3><p id="mNotices">0</p></div>
+    </div>
+    <div class="dash-grid">
+      <div class="card">
+        <strong>Notices</strong>
+        <ul id="noticeList" style="padding-left:18px"></ul>
+        <div style="display:flex;gap:8px;margin-top:8px">
+          <input id="noticeInput" placeholder="Type a notice…" style="flex:1"/>
+          <button class="button primary" id="addNotice">Add</button>
+        </div>
+      </div>
+      <div class="card">
+        <strong>Quick Stats</strong>
+        <p class="muted">This is a demo. Connect to a real database (e.g., Firebase/MySQL) for live data.</p>
+        <ul class="muted" style="padding-left:18px">
+          <li>Fee collection summary</li>
+          <li>Admissions in progress</li>
+          <li>Transport/Inventory overview</li>
+        </ul>
+      </div>
+    </div>
+    <div class="actions" style="justify-content:flex-start"><button class="button ghost" onclick="logout()"><i class="ri-logout-box-r-line"></i> <span data-key="logout">Logout</span></button></div>
+  </section>
+
+  <!-- ===== Login Modal ===== -->
+  <div class="overlay" id="overlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-labelledby="loginTitle">
+      <div class="modal-header">
+        <strong id="loginTitle" data-key="login">Login</strong>
+        <button class="button ghost" onclick="closeModal()"><i class="ri-close-line"></i> <span data-key="close">Close</span></button>
+      </div>
+      <div class="tabs">
+        <button class="tab active" id="tabTeacher" onclick="switchTab('teacher')"><i class="ri-user-voice-line"></i> <span data-key="teacher">Teacher</span></button>
+        <button class="tab" id="tabMgmt" onclick="switchTab('management')"><i class="ri-shield-user-line"></i> <span data-key="management">Management</span></button>
+      </div>
+      <div class="modal-body">
+        <!-- Teacher Login -->
+        <form id="form-teacher">
+          <label data-key="username">Username</label>
+          <input placeholder="teacher@ajs" required id="tUser" />
+          <label data-key="password">Password</label>
+          <input type="password" placeholder="123456" required id="tPass" />
+          <div class="actions">
+            <button type="button" class="button ghost" onclick="closeModal()" data-key="cancel">Cancel</button>
+            <button type="submit" class="button primary" data-key="loginTeacher">Login as Teacher</button>
+          </div>
+        </form>
+        <!-- Management Login -->
+        <form id="form-management" style="display:none">
+          <label>Email</label>
+          <input type="email" placeholder="admin@ashajyoti.edu" required id="mUser" />
+          <label data-key="password">Password</label>
+          <input type="password" placeholder="123456" required id="mPass" />
+          <div class="actions">
+            <button type="button" class="button ghost" onclick="closeModal()" data-key="cancel">Cancel</button>
+            <button type="submit" class="button primary" data-key="loginMgmt">Login as Management</button>
+          </div>
+        </form>
+        <p class="muted" style="margin-top:12px" data-key="demoNote">Note: Demo credentials — Teacher: teacher@ajs / 123456 • Management: admin@ashajyoti.edu / 123456</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox"><img alt=""/></div>
+
+  <script>
+    // ------- Language pack (EN/HI) -------
+    const i18n = {
+      en:{navHome:"Home",navAbout:"About",navAcademics:"Academics",navAdmission:"Admission",navGallery:"Gallery",navContact:"Contact",apply:"Apply",login:"Login",close:"Close",logout:"Logout",applyNow:"Apply Now",tagline:"Nurturing minds since 1996",hero1:"Where Discipline meets",hero2:"Discovery",hero3:"& Dreams.",heroP:"Asha Jyoti School is a community of learners committed to excellence in academics, character and creativity. With campuses in <b>Bansagar, Budwa and Bholehra</b>, we deliver quality education with a caring heart.",stat1:"Campuses",stat2:"Founded",stat3:"Classes",safeCampus:"Safe & Caring Campus",feat1:"Strong Academics",feat1p:"Concept‑based learning, structured practice & regular assessments.",feat2:"Labs & Library",feat2p:"Well‑equipped Science, Computer labs and a rich reading culture.",feat3:"Sports & Arts",feat3p:"Daily sports, cultural events and clubs to build confidence.",aboutTitle:"About the School",aboutText:"Our mission is to build responsible, compassionate and future‑ready citizens. We focus on fundamentals, language fluency, mathematics and scientific temper while nurturing values and discipline.",vision:"Vision",visionText:"Ignite curiosity and character so every child becomes a lifelong learner.",values:"Values",valuesText:"Respect • Integrity • Discipline • Service.",faculty:"Faculty",facultyText:"Dedicated and trained teachers with continuous mentoring and support.",acadTitle:"Academics & Campuses",bansagar:"Pre‑Primary to Class X • Spacious playground • Smart classrooms",budwa:"Primary & Middle School • Computer Lab • Activity rooms",bholehra:"Foundational learning • Safe and caring environment",chip1:"English & Hindi Medium",chip2:"Regular PTMs",chip3:"Scholarships (as per policy)",admOpen:"Admissions Open",admSub:"Session 2025–26 • Nursery to Class X • Limited seats",startAdmission:"Start Admission",knowMore:"Know More",enquiry:"Quick Enquiry",enquiryText:"Fill this short form and our team will contact you.",studentName:"Student Name",classFor:"Class Applying For",parent:"Parent/Guardian",phone:"Phone",message:"Message",reset:"Reset",submit:"Submit",galleryTitle:"Gallery",galleryText:"Add your school photos here. Click a photo to view large.",contactTitle:"Contact",phone2:"Phone",email:"Email",campuses:"Campuses",quickLinks:"Quick Links",social:"Social",tDash:"Teacher Dashboard",students:"Students",classes:"Classes",attendance:"Attendance Today",avgMarks:"Avg. Marks",stuList:"Student List",quickActions:"Quick Actions",teacher:"Teacher",management:"Management",username:"Username",password:"Password",cancel:"Cancel",loginTeacher:"Login as Teacher",loginMgmt:"Login as Management",demoNote:"Note: Demo credentials — Teacher: teacher@ajs / 123456 • Management: admin@ashajyoti.edu / 123456"},
+      hi:{navHome:"मुखपृष्ठ",navAbout:"हमारे बारे में",navAcademics:"अकादमिक",navAdmission:"प्रवेश",navGallery:"गैलरी",navContact:"संपर्क",apply:"आवेदन",login:"लॉगिन",close:"बंद करें",logout:"लॉगआउट",applyNow:"अभी आवेदन करें",tagline:"1996 से ज्ञान का प्रकाश",hero1:"जहाँ अनुशासन मिलता है",hero2:"खोज",hero3:"और सपनों से।",heroP:"आशा ज्योति स्कूल उत्कृष्ट शिक्षा, चरित्र और रचनात्मकता के लिए प्रतिबद्ध सीखने वालों का समुदाय है। <b>बाणसागर, बुधवा और भोलेहरा</b> में हमारे कैंपस के साथ हम स्नेहपूर्ण वातावरण में गुणवत्तापूर्ण शिक्षा देते हैं।",stat1:"कैंपस",stat2:"स्थापना",stat3:"कक्षाएँ",safeCampus:"सुरक्षित एवं देखभाल वाला परिसर",feat1:"मज़बूत अकादमिक",feat1p:"कॉन्सेप्ट‑आधारित शिक्षा, नियमित अभ्यास और आकलन।",feat2:"प्रयोगशालाएँ व पुस्तकालय",feat2p:"सुसज्जित विज्ञान/कंप्यूटर लैब और समृद्ध पठन संस्कृति।",feat3:"खेल व कला",feat3p:"दैनिक खेल, सांस्कृतिक कार्यक्रम और क्लब।",aboutTitle:"विद्यालय के बारे में",aboutText:"हमारा लक्ष्य जिम्मेदार, करुणामय और भविष्य‑तैयार नागरिक बनाना है। हम मूलभूत ज्ञान, भाषा, गणित और वैज्ञानिक दृष्टिकोण के साथ मूल्यों पर ध्यान देते हैं।",vision:"दृष्टि",visionText:"जिज्ञासा और चरित्र को जगाना ताकि हर बच्चा आजीवन विद्यार्थी बने।",values:"मूल्य",valuesText:"सम्मान • निष्ठा • अनुशासन • सेवा",faculty:"स्टाफ",facultyText:"समर्पित और प्रशिक्षित शिक्षक निरंतर मार्गदर्शन के साथ।",acadTitle:"अकादमिक और कैंपस",bansagar:"प्रि‑प्राइमरी से कक्षा 10 • विशाल मैदान • स्मार्ट कक्षाएँ",budwa:"प्राइमरी व मिडिल • कंप्यूटर लैब • गतिविधि कक्ष",bholehra:"आधारभूत शिक्षा • सुरक्षित माहौल",chip1:"अंग्रेज़ी व हिंदी माध्यम",chip2:"नियमित पीटीएम",chip3:"छात्रवृत्ति (नीति अनुसार)",admOpen:"प्रवेश खुले हैं",admSub:"सत्र 2025–26 • नर्सरी से कक्षा 10 • सीमित सीटें",startAdmission:"प्रवेश प्रारम्भ करें",knowMore:"और जानें",enquiry:"त्वरित पूछताछ",enquiryText:"यह छोटा फॉर्म भरें, हमारी टीम आपसे संपर्क करेगी।",studentName:"विद्यार्थी का नाम",classFor:"कक्षा",parent:"अभिभावक",phone:"फ़ोन",message:"संदेश",reset:"रीसेट",submit:"सबमिट",galleryTitle:"गैलरी",galleryText:"यहाँ स्कूल की फ़ोटो जोड़ें। देखने के लिए फ़ोटो पर क्लिक करें।",contactTitle:"संपर्क",phone2:"फ़ोन",email:"ईमेल",campuses:"कैंपस",quickLinks:"त्वरित लिंक",social:"सोशल",tDash:"शिक्षक डैशबोर्ड",students:"विद्यार्थी",classes:"कक्षाएँ",attendance:"आज की उपस्थिति",avgMarks:"औसत अंक",stuList:"विद्यार्थी सूची",quickActions:"त्वरित कार्य",teacher:"शिक्षक",management:"प्रबंधन",username:"यूज़रनेम",password:"पासवर्ड",cancel:"रद्द करें",loginTeacher:"शिक्षक लॉगिन",loginMgmt:"प्रबंधन लॉगिन",demoNote:"डेमो लॉगिन — Teacher: teacher@ajs / 123456 • Management: admin@ashajyoti.edu / 123456"}
+    }
+
+    let currentLang = 'en';
+    const langBtn = document.getElementById('langBtn');
+    const setLang = (lang)=>{
+      currentLang = lang; langBtn.textContent = (lang==='en'?'हिंदी':'English');
+      document.querySelectorAll('[data-key]').forEach(el=>{const k=el.getAttribute('data-key'); if(i18n[lang][k]) el.innerHTML = i18n[lang][k];});
+    };
+    langBtn.addEventListener('click',()=> setLang(currentLang==='en'?'hi':'en'));
+
+    // Smooth scroll + menu toggle
+    function scrollToId(id){document.getElementById(id)?.scrollIntoView({behavior:'smooth'});} 
+    const hamburger=document.getElementById('hamburger');
+    const navLinks=document.getElementById('navLinks');
+    hamburger?.addEventListener('click',()=>{navLinks.style.display = navLinks.style.display==='flex' ? 'none':'flex';});
+
+    // Login modal controls
+    const overlay=document.getElementById('overlay');
+    const loginBtn=document.getElementById('loginBtn');
+    const body=document.body;
+    loginBtn?.addEventListener('click',openModal);
+    function openModal(){overlay.style.display='flex'; body.style.overflow='hidden';}
+    function closeModal(){overlay.style.display='none'; body.style.overflow='auto';}
+    overlay?.addEventListener('click', (e)=>{ if(e.target===overlay) closeModal(); });
+    window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
+
+    // Tabs
+    function switchTab(role){
+      const tTab=document.getElementById('tabTeacher');
+      const mTab=document.getElementById('tabMgmt');
+      const tForm=document.getElementById('form-teacher');
+      const mForm=document.getElementById('form-management');
+      const isTeacher=role==='teacher'; tTab.classList.toggle('active',isTeacher); mTab.classList.toggle('active',!isTeacher); tForm.style.display=isTeacher?'block':'none'; mForm.style.display=isTeacher?'none':'block';
+    }
+
+    // Enquiry form (demo)
+    const enquiryForm=document.getElementById('enquiryForm');
+    const enquiryThanks=document.getElementById('enquiryThanks');
+    enquiryForm?.addEventListener('submit',(e)=>{e.preventDefault(); const data=Object.fromEntries(new FormData(e.target).entries()); const store=JSON.parse(localStorage.getItem('enquiries')||'[]'); store.push({...data,ts:Date.now()}); localStorage.setItem('enquiries',JSON.stringify(store)); enquiryThanks.style.display='block'; e.target.reset(); setTimeout(()=>{enquiryThanks.style.display='none'},3000)});
+
+    // Gallery (placeholders + lightbox)
+    const gallery=[
+      'https://images.unsplash.com/photo-1588072432836-e10032774350?q=80&w=1200&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1200&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1588072432836-61f94d0b0684?q=80&w=1200&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1588072432836-fd1d3f3f2719?q=80&w=1200&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1200&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1596495578068-9ec8d2b0c1f1?q=80&w=1200&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=1200&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1456735190827-d1262f71b8a3?q=80&w=1200&auto=format&fit=crop'
+    ];
+    const grid=document.getElementById('galleryGrid');
+    const lb=document.getElementById('lightbox');
+    const lbImg=lb.querySelector('img');
+    gallery.forEach(src=>{const fig=document.createElement('figure'); const img=document.createElement('img'); img.loading='lazy'; img.src=src; img.alt='School photo'; fig.appendChild(img); fig.addEventListener('click',()=>{lbImg.src=src; lb.style.display='flex'}); grid.appendChild(fig);});
+    lb.addEventListener('click',()=>{lb.style.display='none'});
+
+    // ---------- Demo Data for Dashboards ----------
+    const students=[
+      {name:'Aarav Sharma', cls:'Class 8', roll:12, branch:'Bansagar', attendance:92, marks:[78,84,90]},
+      {name:'Priya Verma', cls:'Class 10', roll:5, branch:'Budwa', attendance:95, marks:[88,91,86]},
+      {name:'Rohan Singh', cls:'Class 7', roll:9, branch:'Bansagar', attendance:88, marks:[72,80,79]},
+      {name:'Sneha Patel', cls:'Class 6', roll:3, branch:'Bholehra', attendance:97, marks:[90,92,94]},
+      {name:'Kabir Khan', cls:'Class 5', roll:21, branch:'Budwa', attendance:85, marks:[68,74,70]},
+      {name:'Ananya Gupta', cls:'Class 9', roll:16, branch:'Bansagar', attendance:91, marks:[89,84,88]},
+    ];
+
+    // Teacher dashboard rendering
+    const studentTableBody=document.querySelector('#studentTable tbody');
+    const filterClass=document.getElementById('filterClass');
+    const searchBox=document.getElementById('searchBox');
+    const kpiStudents=document.getElementById('kpiStudents');
+    const kpiClasses=document.getElementById('kpiClasses');
+    const kpiAttendance=document.getElementById('kpiAttendance');
+    const kpiAvg=document.getElementById('kpiAvg');
+    const attnBox=document.getElementById('attnBox');
+    let selectedStudent=null;
+
+    function avg(arr){return Math.round(arr.reduce((a,b)=>a+b,0)/arr.length);} 
+    function renderKPIs(list){
+      const classes=[...new Set(list.map(s=>s.cls))];
+      kpiStudents.textContent=list.length;
+      kpiClasses.textContent=classes.length;
+      kpiAttendance.textContent=Math.round(list.reduce((a,s)=>a+s.attendance,0)/list.length)+"%";
+      kpiAvg.textContent=avg(list.map(s=>avg(s.marks)))+"%";
+    }
+
+    function renderTable(){
+      const q=searchBox.value.toLowerCase();
+      const cls=filterClass.value;
+      const list=students.filter(s=>(!cls||s.cls===cls) && s.name.toLowerCase().includes(q));
+      studentTableBody.innerHTML=list.map((s,i)=>`<tr><td>${s.name}</td><td>${s.cls}</td><td>${s.roll}</td><td>${s.branch}</td><td>${s.attendance}%</td><td>${avg(s.marks)}%</td><td><button class="button ghost" onclick="selectStudent(${i})">Select</button></td></tr>`).join('');
+      renderKPIs(list.length?list:students);
+    }
+    window.selectStudent=(idx)=>{selectedStudent=students[idx]; attnBox.textContent=`Selected: ${selectedStudent.name} (${selectedStudent.cls})`;}
+    filterClass.addEventListener('change',renderTable); searchBox.addEventListener('input',renderTable);
+
+    // Attendance buttons (demo only)
+    document.getElementById('markPresent').addEventListener('click',()=>{ if(!selectedStudent){alert('Select a student first'); return;} selectedStudent.attendance=Math.min(100,selectedStudent.attendance+1); renderTable();});
+    document.getElementById('markAbsent').addEventListener('click',()=>{ if(!selectedStudent){alert('Select a student first'); return;} selectedStudent.attendance=Math.max(0,selectedStudent.attendance-1); renderTable();});
+
+    // Teacher notes
+    const notesKey='ajs_teacher_notes';
+    const notesArea=document.getElementById('teacherNotes');
+    document.getElementById('saveNotes').addEventListener('click',()=>{localStorage.setItem(notesKey,notesArea.value); alert('Saved');});
+    notesArea.value=localStorage.getItem(notesKey)||'';
+
+    // Management Dashboard
+    function renderMgmt(){
+      document.getElementById('mStudents').textContent=students.length;
+      document.getElementById('mTeachers').textContent=18; // demo
+    }
+    const noticeList=document.getElementById('noticeList');
+    const noticeInput=document.getElementById('noticeInput');
+    const mNotices=document.getElementById('mNotices');
+    function loadNotices(){ const n=JSON.parse(localStorage.getItem('ajs_notices')||'[]'); noticeList.innerHTML=n.map((t,i)=>`<li>${t} <a href="#" onclick="delNotice(${i})">✕</a></li>`).join(''); mNotices.textContent=n.length; }
+    window.delNotice=(i)=>{ const n=JSON.parse(localStorage.getItem('ajs_notices')||'[]'); n.splice(i,1); localStorage.setItem('ajs_notices',JSON.stringify(n)); loadNotices(); };
+    document.getElementById('addNotice').addEventListener('click',()=>{ const v=noticeInput.value.trim(); if(!v) return; const n=JSON.parse(localStorage.getItem('ajs_notices')||'[]'); n.push(v); localStorage.setItem('ajs_notices',JSON.stringify(n)); noticeInput.value=''; loadNotices(); });
+
+    // Public/Gated views
+    const publicSite=document.getElementById('publicSite');
+    const teacherDash=document.getElementById('teacherDash');
+    const mgmtDash=document.getElementById('mgmtDash');
+    function showView(view){ publicSite.style.display=(view==='public')?'block':'none'; teacherDash.style.display=(view==='teacher')?'block':'none'; mgmtDash.style.display=(view==='mgmt')?'block':'none'; window.scrollTo({top:0,behavior:'smooth'}); }
+    function logout(){ showView('public'); }
+    window.logout=logout;
+
+    // Login handlers (demo)
+    document.getElementById('form-teacher').addEventListener('submit',(e)=>{e.preventDefault(); const u=document.getElementById('tUser').value.trim(); const p=document.getElementById('tPass').value.trim(); if(u==='teacher@ajs' && p==='123456'){ closeModal(); showView('teacher'); renderTable(); setLang(currentLang);} else alert('Invalid teacher credentials');});
+    document.getElementById('form-management').addEventListener('submit',(e)=>{e.preventDefault(); const u=document.getElementById('mUser').value.trim(); const p=document.getElementById('mPass').value.trim(); if(u==='admin@ashajyoti.edu' && p==='123456'){ closeModal(); showView('mgmt'); renderMgmt(); loadNotices(); setLang(currentLang);} else alert('Invalid management credentials');});
+
+    // Init
+    setLang('en');
+    renderTable();
+  </script>
+</body>
+</html>
